@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>RateActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,0,255); }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+RateActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.example.sourabh_.childtrackingsystem; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.Random; 
+ 
+</span><span class="s0">import </span><span class="s1">android.app.Activity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+ 
+</span><span class="s0">import </span><span class="s1">com.jjoe64.graphview.GraphView; 
+</span><span class="s0">import </span><span class="s1">com.jjoe64.graphview.Viewport; 
+</span><span class="s0">import </span><span class="s1">com.jjoe64.graphview.series.DataPoint; 
+</span><span class="s0">import </span><span class="s1">com.jjoe64.graphview.series.LineGraphSeries; 
+ 
+</span><span class="s0">public class </span><span class="s1">RateActivity </span><span class="s0">extends </span><span class="s1">Activity { 
+ 
+    </span><span class="s0">private static final </span><span class="s1">Random RANDOM = </span><span class="s0">new </span><span class="s1">Random(); 
+    </span><span class="s0">private </span><span class="s1">LineGraphSeries&lt;DataPoint&gt; series; 
+    </span><span class="s0">private int </span><span class="s1">lastX = </span><span class="s2">0</span><span class="s1">; 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_rate); 
+        </span><span class="s3">// we get graph view instance</span><span class="s1"> 
+        GraphView graph = (GraphView) findViewById(R.id.graph); 
+        </span><span class="s3">// data</span><span class="s1"> 
+        series = </span><span class="s0">new </span><span class="s1">LineGraphSeries&lt;DataPoint&gt;(); 
+        graph.addSeries(series); 
+        </span><span class="s3">// customize a little bit viewport</span><span class="s1"> 
+        Viewport viewport = graph.getViewport(); 
+        viewport.setYAxisBoundsManual(</span><span class="s0">true</span><span class="s1">); 
+        viewport.setMinY(</span><span class="s2">0</span><span class="s1">); 
+        viewport.setMaxY(</span><span class="s2">20</span><span class="s1">); 
+        viewport.setScrollable(</span><span class="s0">true</span><span class="s1">); 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onResume() { 
+        </span><span class="s0">super</span><span class="s1">.onResume(); 
+        </span><span class="s3">// we're going to simulate real time with thread that append data to the graph</span><span class="s1"> 
+        </span><span class="s0">new </span><span class="s1">Thread(</span><span class="s0">new </span><span class="s1">Runnable() { 
+ 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">run() { 
+                </span><span class="s3">// we add 100 new entries</span><span class="s1"> 
+                </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s2">0</span><span class="s1">; i &lt; </span><span class="s2">100</span><span class="s1">; i++) { 
+                    runOnUiThread(</span><span class="s0">new </span><span class="s1">Runnable() { 
+ 
+                        @Override 
+                        </span><span class="s0">public void </span><span class="s1">run() { 
+                            addEntry(); 
+                        } 
+                    }); 
+ 
+                    </span><span class="s3">// sleep to slow down the add of entries</span><span class="s1"> 
+                    </span><span class="s0">try </span><span class="s1">{ 
+                        Thread.sleep(</span><span class="s2">600</span><span class="s1">); 
+                    } </span><span class="s0">catch </span><span class="s1">(InterruptedException e) { 
+                        </span><span class="s3">// manage error ...</span><span class="s1"> 
+                    } 
+                } 
+            } 
+        }).start(); 
+    } 
+ 
+    </span><span class="s3">// add random data to graph</span><span class="s1"> 
+    </span><span class="s0">private void </span><span class="s1">addEntry() { 
+        </span><span class="s3">// here, we choose to display max 10 points on the viewport and we scroll to end</span><span class="s1"> 
+        series.appendData(</span><span class="s0">new </span><span class="s1">DataPoint(lastX++, RANDOM.nextDouble() * </span><span class="s2">10d</span><span class="s1">), </span><span class="s0">true</span><span class="s1">, </span><span class="s2">10</span><span class="s1">); 
+    } 
+ 
+} 
+</span></pre>
+</body>
+</html>

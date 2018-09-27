@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/white"
+    android:padding="16dp"
+    tools:context="com.example.sourabh_.childtrackingsystem.RegActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/l1"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/unnamed"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Always With Your Child"
+            android:textColor="#FF409CFF"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="25dp"/>
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_action_mail"
+        android:hint="   Email Address"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:drawableLeft="@drawable/ic_action_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="   Password"
+        android:inputType="textPassword"
+        android:id="@+id/password"/>
+
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@color/colorAccent"
+        android:layout_marginBottom="10dp"
+        android:text="@string/btn_login"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/reg_back"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="back"
+        android:textColor="@android:color/black"/>
+</LinearLayout>

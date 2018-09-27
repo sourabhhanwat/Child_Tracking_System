@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>MAPActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MAPActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.example.sourabh_.childtrackingsystem; 
+ 
+</span><span class="s0">import </span><span class="s1">android.Manifest; 
+</span><span class="s0">import </span><span class="s1">android.content.pm.PackageManager; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.app.ActivityCompat; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.app.FragmentActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+ 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.CameraUpdateFactory; 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.GoogleMap; 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.OnMapReadyCallback; 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.SupportMapFragment; 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.model.BitmapDescriptorFactory; 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.model.LatLng; 
+</span><span class="s0">import </span><span class="s1">com.google.android.gms.maps.model.MarkerOptions; 
+ 
+</span><span class="s0">public class </span><span class="s1">MAPActivity </span><span class="s0">extends </span><span class="s1">FragmentActivity </span><span class="s0">implements </span><span class="s1">OnMapReadyCallback { 
+ 
+    </span><span class="s0">private </span><span class="s1">GoogleMap mMap; 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_map); 
+        </span><span class="s2">// Obtain the SupportMapFragment and get notified when the map is ready to be used.</span><span class="s1"> 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager() 
+                .findFragmentById(R.id.map); 
+        mapFragment.getMapAsync(</span><span class="s0">this</span><span class="s1">); 
+    } 
+     
+    </span><span class="s2">/** 
+     * Manipulates the map once available. 
+     * This callback is triggered when the map is ready to be used. 
+     * This is where we can add markers or lines, add listeners or move the camera. In this case, 
+     * we just add a marker near Sydney, Australia. 
+     * If Google Play services is not installed on the device, the user will be prompted to install 
+     * it inside the SupportMapFragment. This method will only be triggered once the user has 
+     * installed Google Play services and returned to the app. 
+     */</span><span class="s1"> 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onMapReady(GoogleMap googleMap) { 
+ 
+        mMap = googleMap; 
+      </span><span class="s2">//  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);</span><span class="s1"> 
+        LatLng sydney = </span><span class="s0">new </span><span class="s1">LatLng(</span><span class="s3">12.935991</span><span class="s1">, </span><span class="s3">77.605751</span><span class="s1">); 
+        mMap.addMarker(</span><span class="s0">new </span><span class="s1">MarkerOptions().position(sydney).title(</span><span class="s4">&quot;CHRIST&quot;</span><span class="s1">)); 
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,</span><span class="s3">12</span><span class="s1">)); 
+ 
+        LatLng my = </span><span class="s0">new </span><span class="s1">LatLng(</span><span class="s3">12.916100</span><span class="s1">, </span><span class="s3">77.612262</span><span class="s1">); 
+        mMap.addMarker(</span><span class="s0">new </span><span class="s1">MarkerOptions().position(my).title(</span><span class="s4">&quot;Home&quot;</span><span class="s1">).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_action_loc))); 
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(my)); 
+        </span><span class="s0">if </span><span class="s1">(ActivityCompat.checkSelfPermission(</span><span class="s0">this</span><span class="s1">, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &amp;&amp; ActivityCompat.checkSelfPermission(</span><span class="s0">this</span><span class="s1">, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) { 
+            </span><span class="s2">// TODO: Consider calling</span><span class="s1"> 
+            </span><span class="s2">//    ActivityCompat#requestPermissions</span><span class="s1"> 
+            </span><span class="s2">// here to request the missing permissions, and then overriding</span><span class="s1"> 
+            </span><span class="s2">//   public void onRequestPermissionsResult(int requestCode, String[] permissions,</span><span class="s1"> 
+            </span><span class="s2">//                                          int[] grantResults)</span><span class="s1"> 
+            </span><span class="s2">// to handle the case where the user grants the permission. See the documentation</span><span class="s1"> 
+            </span><span class="s2">// for ActivityCompat#requestPermissions for more details.</span><span class="s1"> 
+            </span><span class="s0">return</span><span class="s1">; 
+        } 
+        mMap.setMyLocationEnabled(</span><span class="s0">true</span><span class="s1">); 
+    } 
+}</span></pre>
+</body>
+</html>

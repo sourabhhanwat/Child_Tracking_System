@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/white"
+    tools:context="com.example.sourabh_.childtrackingsystem.LoginActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/l1"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/unnamed"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Always With Your Child"
+        android:textColor="#FF409CFF"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="20dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:drawableLeft="@drawable/ic_action_name"
+            android:hint="   Full Name"
+            android:inputType="textPersonName"/>
+
+
+        <EditText android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/ic_action_mail"
+        android:layout_marginBottom="5dp"
+        android:textColor="@android:color/black"
+        android:inputType="textEmailAddress"
+        android:hint="  Email-ID"
+        android:id="@+id/email"/>
+
+    <EditText android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:drawableLeft="@drawable/ic_action_password"
+        android:layout_marginBottom="5dp"
+        android:textColor="@android:color/black"
+        android:inputType="textPassword" android:hint="  password"
+        android:id="@+id/password"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:paddingTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date Of Birth"
+                android:drawableLeft="@drawable/ic_action_date"
+                android:textSize="18dp"
+                android:id="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/Date"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/textView2"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="date"
+                android:paddingTop="5dp" />
+        </RelativeLayout>
+
+
+        <!-- Login Button -->
+
+
+    <Button android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/black"
+        android:id="@+id/sign_up_button" android:text="register"
+        android:layout_marginTop="10dp"/>
+
+
+    <!-- Link to Login Screen -->
+
+
+    <Button android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/black"
+        android:id="@+id/sign_in"
+        android:text="@string/btn_link_to_login"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>
+
+    <ProgressBar android:layout_height="100dp"
+        android:layout_width="100dp"
+        tools:ignore="MissingConstraints"
+        android:layout_gravity="center|bottom"
+        android:id="@+id/progressBar"
+        tools:layout_editor_absoluteY="162dp"
+        tools:layout_editor_absoluteX="142dp"
+        android:visibility="gone"/>
+
+
+</LinearLayout>
